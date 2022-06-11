@@ -1,0 +1,12 @@
+{
+ "env": {
+  "browser": true,
+  "es2022": true
+ },
+ "parser": "@babel/eslint-parser",
+ "parserOptions": {
+  "requireConfigFile": false,
+  "ecmaVersion": 12
+ },
+ "extends": ["prettier", "eslint:recommended", "plugin:jsx-a11y/recommended"]
+}
