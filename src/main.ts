@@ -1,10 +1,7 @@
 import Grid from "../src/classes/Grid";
+import Game from "./classes/Game";
 
-const grid = new Grid();
-console.log(grid.board());
-
-
-
-
+Grid.drawBoard();
+Game.init();
 
 export {};

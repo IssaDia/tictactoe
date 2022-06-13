@@ -1,5 +1,9 @@
+
 describe("Grid tests", () => {
-    it("should equal 4", () => {
-        expect(2+2).toBe(4);
+   
+    it("should contains a container", async () => {
+    //   const body = document.body;
+    //   const app = await document.getElementById("app");
+    //   console.log(app);
     })
 })
