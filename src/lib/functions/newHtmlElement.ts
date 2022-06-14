@@ -6,16 +6,14 @@
 //   return htmlElm;
 // };
 
-export class createHTMLElement extends HTMLElement {
+export class NewHTMLElement extends HTMLElement {
   elm: HTMLElement;
   classes: string[];
-  parent: HTMLElement;
 
-  constructor(elm: string, classes: string[], parent: HTMLElement) {
+  constructor(elm: string, classes: string[]) {
     super();
     this.elm = document.createElement(elm) as HTMLElement;
     this.classes = classes;
-    this.parent = parent;
   }
 
   set htmlElement(elm: string) {
@@ -26,13 +24,12 @@ export class createHTMLElement extends HTMLElement {
     this.classes = classes;
   }
 
-  set htmlParent(parent: HTMLElement) {
-    this.parent = parent;
-  }
+  get createElement(): HTMLElement {
+    const createdElement = this.elm;
+    createdElement.classList.add(this.classes.join());
 
-  get createElement() {
-    const createdElement = this.elm.classList.add(...this.classes);
-    this.parent.append(createdElement);
     return createdElement;
   }
 }
+
+window.customElements.define("new-html-element", NewHTMLElement);

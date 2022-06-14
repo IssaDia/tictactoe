@@ -1,5 +1,6 @@
 import { GridElmstate } from "../lib/interfaces/GridElmState";
 import { GridState } from "../lib/utils/GridState";
+import { NewHTMLElement } from "../lib/functions/newHtmlElement";
 
 class Grid {
   static state: GridElmstate = GridState;
@@ -12,7 +13,13 @@ class Grid {
     container?.classList.add("container", "flex", "justify-center", "flex-col", "items-center");
     app?.append(container);
 
-    console.log(typeof container);
+    const divElm = new NewHTMLElement("div", ["h-full", "w-full"]);
+
+    container.append(divElm);
+
+    divElm.innerHTML = "Hello";
+
+    console.log(divElm);
 
     // create a grid and link it to container
     const grid = document.createElement("div");
