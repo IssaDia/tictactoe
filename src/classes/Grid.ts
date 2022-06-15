@@ -1,49 +1,67 @@
+import { HTMLElm } from "../lib/functions/htmlElm";
 import { GridElmstate } from "../lib/interfaces/GridElmState";
 import { GridState } from "../lib/utils/GridState";
-import { NewHTMLElement } from "../lib/functions/newHtmlElement";
 
 class Grid {
   static state: GridElmstate = GridState;
   static drawBoard() {
     // get main div
-    const app = document.getElementById("app") as HTMLDivElement;
+    const app = document.getElementById("app") as HTMLElement;
+    // console.log(app);
 
     // create a container and link it to main div
     const container = document.createElement("div") as HTMLDivElement;
     container?.classList.add("container", "flex", "justify-center", "flex-col", "items-center");
     app?.append(container);
-
-    const divElm = new NewHTMLElement("div", ["h-full", "w-full"]);
-
-    container.append(divElm);
-
-    divElm.innerHTML = "Hello";
-
-    console.log(divElm);
+    // const container = new HTMLElm(
+    //   "div",
+    //   "container flex justify-center flex-col items-center",
+    //   app,
+    //   "mainContainer"
+    // ) as HTMLElement;
 
     // create a grid and link it to container
     const grid = document.createElement("div");
     grid.classList.add("w-96", "h-96", "border-8", "grid", "grid-cols-3", "border-indigo-600");
     container?.append(grid);
 
+    // const grid = new HTMLElm(
+    //   "div",
+    //   "w-96 h-96 border-8 grid grid-cols-3 border-indigo-600",
+    //   container,
+    //   "grid"
+    // ) as HTMLElement;
+
     // create a score card
-    const scoreCardContainer = document.createElement("div") as HTMLDivElement;
-    scoreCardContainer.id = "score";
-    const scoreCardText = document.createElement("p") as HTMLParagraphElement;
-    scoreCardText.innerText = "C'est au tour du joueur : ";
-    const scoreCardSpan = document.createElement("span") as HTMLSpanElement;
-    scoreCardSpan.id = "player";
+    // const scoreCardContainer = document.createElement("div") as HTMLDivElement;
+    // scoreCardContainer.id = "score";
+    // const scoreCardText = document.createElement("p") as HTMLParagraphElement;
+    // scoreCardText.innerText = "C'est au tour du joueur : ";
+    // const scoreCardSpan = document.createElement("span") as HTMLSpanElement;
+    // scoreCardSpan.id = "player";
 
     // create gridElm and link them all to the grid
 
     const nb = 9;
     for (let i = 0; i < nb; i++) {
+      // const gridElm = new HTMLElm(
+      //   "div",
+      //   "border-8 border-indigo-500 flex align-center content-center",
+      //   grid,
+      //   `gridElm${i + 1}`
+      // );
+
       const gridElm = document.createElement("div") as HTMLDivElement;
       gridElm.classList.add("border-8", "border-indigo-500", "flex", "align-center", "content-center");
       gridElm.id = `gridElm${i + 1}`;
+
+      // const gridElmSpan = new HTMLElm("span", "", gridElm, "");
       const gridElmSpan = document.createElement("span") as HTMLSpanElement;
       gridElm.append(gridElmSpan);
       grid.append(gridElm);
+
+      console.log(gridElmSpan);
+
       gridElm.addEventListener("click", () => {
         // update state of elm
         const idGridElm = gridElm.id;
